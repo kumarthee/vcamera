@@ -1,5 +1,3 @@
-# This config was automatically generated from your source code
-# Stacks detected: cicd:github-actions:.github/workflows,deps:java:.,tool:gradle:
 version: 2.1
 jobs:
   test-java:
@@ -15,6 +13,12 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
+          name: Ensure gradlew wrapper files exist
+          command: |
+            if [ ! -f ./gradlew ] || [ ! -d ./gradle/wrapper ]; then
+              echo "Gradle wrapper files missing. Please ensure gradlew and gradle/wrapper/ exist in your repo." && exit 1
+            fi
+      - run:
           command: ./gradlew check
       - store_test_results:
           path: build/test-results
@@ -25,11 +29,9 @@ jobs:
       - store_artifacts:
           path: build/reports
   deploy:
-    # This is an example deploy job, not actually used by the workflow
     docker:
       - image: cimg/base:stable
     steps:
-      # Replace this with steps to deploy to users
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
@@ -40,6 +42,3 @@ workflows:
   build-and-test:
     jobs:
       - test-java
-    # - deploy:
-    #     requires:
-    #       - test-java

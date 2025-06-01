@@ -16,24 +16,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: கோட் டவுன்லோட் செய்ய
+      # Step 1: கோட் டவுன்லோட் செய்ய (முழு ஹிஸ்டரி வேர்ஷன்)
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # முழு கிட் ஹிஸ்டரி டவுன்லோட் செய்ய
 
-      # Step 2: ஜாவா செட்அப்
+      # Step 2: Gradle Wrapper செட்அப் (புதிய வேர்ஷன்)
+      - name: Set up Gradle Wrapper
+        run: |
+          ./gradlew wrapper --gradle-version 8.0
+          chmod +x gradlew
+
+      # Step 3: ஜாவா செட்அப்
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # Step 3: Android SDK செட்அப்
+      # Step 4: Android SDK செட்அப்
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-
-      # Step 4: gradlew பெர்மிஷன் கொடுக்க
-      - name: Make gradlew executable
-        run: chmod +x gradlew
 
       # Step 5: கிரேடில் கேச்
       - name: Cache Gradle dependencies

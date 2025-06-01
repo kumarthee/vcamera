@@ -40,10 +40,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Stop Gradle daemons (avoid lock issues)
+        run: ./gradlew --stop
+
       - name: Build Debug APK
         run: |
           ./gradlew clean
-          ./gradlew assembleDebug --stacktrace --info
+          ./gradlew assembleDebug --stacktrace --info --warning-mode all
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4

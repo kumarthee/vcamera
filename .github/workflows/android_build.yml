@@ -6,24 +6,36 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
 jobs:
   build:
-    name: Build APK
+    name: Build and Upload APK
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: கோட் டவுன்லோட் செய்ய
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: ஜாவா செட்அப்
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
+      # Step 3: Android SDK செட்அப்
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      # Step 4: gradlew பெர்மிஷன் கொடுக்க
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      # Step 5: கிரேடில் கேச்
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
         with:
@@ -34,27 +46,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      # Step 6: APK பில்டு செய்ய
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Build Release APK
         run: |
-          ./gradlew assembleRelease
-          # Note: For signed release builds, you need to configure signing configs
+          ./gradlew clean
+          ./gradlew assembleDebug --stacktrace --info
 
-      - name: Upload Debug APK
+      # Step 7: APK அப்லோட் செய்ய
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
-      - name: Upload Release APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
-          if-no-files-found: warn
-
-      - name: Show build directory structure
+      # Step 8: பில்டு டைரக்டரி சரிபார்க்க
+      - name: List build outputs
         run: ls -R app/build/outputs/

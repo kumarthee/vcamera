@@ -41,9 +41,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
     implementation 'androidx.preference:preference:1.2.1'
+
     // FloatingMagnetView dependency
     implementation 'com.imuxuan:floatingview:1.7'
-    // CornerLabelView dependency (if needed)
+    // CornerLabelView dependency
     implementation 'com.github.othershe:CornerLabelView:1.0.2'
+
     // HackApi dependency (if it is a library, add here. If it is your own file, make sure it exists in your source code)
 }

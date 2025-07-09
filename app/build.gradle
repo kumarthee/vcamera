@@ -1,29 +1,32 @@
-// Root build.gradle file
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android' // Kotlin code இருந்தால் மட்டும், இல்லையெனில் இந்த வரியை நீக்கலாம்
+}
 
-buildscript {
-    ext {
-        compileSdkVersion = 33
-        minSdkVersion = 21
-        targetSdkVersion = 33
-        versionCode = 1
-        versionName = "1.0"
-        masterPkg = "com.example.myapp"  // உங்கள் app package name இங்கு
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.example.myapp" // உங்கள் app package name
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
     }
 
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
-        // Kotlin Gradle plugin (if kotlin used)
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // Kotlin code இருந்தால் மட்டும் கீழே உள்ள வரியை வையுங்கள்
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
 }

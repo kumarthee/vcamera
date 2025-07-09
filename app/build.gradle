@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android' // Kotlin code இருந்தா மட்டும்
+    id 'kotlin-android'
 }
 
 android {
@@ -14,13 +14,16 @@ android {
         versionName "1.0"
     }
 
-    // இங்கே இந்த 2 block-ஐ paste பண்ணுங்கள்!
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = '17'
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 
     buildTypes {
@@ -38,4 +41,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
     implementation 'androidx.preference:preference:1.2.1'
+    // FloatingMagnetView dependency
+    implementation 'com.imuxuan:floatingview:1.7'
+    // CornerLabelView dependency (if needed)
+    implementation 'com.github.othershe:CornerLabelView:1.0.2'
+    // HackApi dependency (if it is a library, add here. If it is your own file, make sure it exists in your source code)
 }

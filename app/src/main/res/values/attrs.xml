@@ -1,0 +1,16 @@
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="dotsSpacing" format="dimension"/>
+        <attr name="dotsCornerRadius" format="dimension"/>
+        <attr name="dotsSize" format="dimension"/>
+        <attr name="progressMode" format="boolean"/>
+        <attr name="dotsWidthFactor" format="float"/>
+        <attr name="type" format="string"/>
+        <attr name="position" format="integer"/>
+        <attr name="text" format="string"/>
+        <attr name="text_color" format="color"/>
+        <attr name="bg_color" format="color"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="side_length" format="dimension"/>
+    </declare-styleable>
+</resources>

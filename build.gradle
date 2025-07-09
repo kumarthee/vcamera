@@ -11,7 +11,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // <--- இதைச் சேர்க்கவும்!
+        maven { url 'https://jitpack.io' } // JitPack repository added here!
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
@@ -23,6 +23,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // <--- இதையும் சேர்க்கவும்!
+        maven { url 'https://jitpack.io' } // JitPack repository added here too!
     }
 }

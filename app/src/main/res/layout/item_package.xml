@@ -23,7 +23,7 @@
                 android:layout_gravity="top|start"
                 android:visibility="invisible"
                 app:bg_color="@color/primary"
-                app:position="left_top"
+                app:position="0"
                 app:text="*"
                 app:side_length="22dp" />
     </FrameLayout>

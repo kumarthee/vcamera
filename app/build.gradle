@@ -45,6 +45,6 @@ dependencies {
     // ✅ FloatingMagnetViewக்கு மாற்று (EasyFloat)
     implementation 'com.github.princekin-f:EasyFloat:2.0.4'
 
-    // ✅ CornerLabelViewக்கு மாற்று (LabelView)
-    implementation 'com.github.JavaNoober:LabelView:v1.1.2'
+    // ✅ CornerLabelViewக்கு மாற்று (LabelView) - CORRECT FORMAT!
+    implementation 'com.github.javaNoober.LabelView:library:1.1.2'
 }

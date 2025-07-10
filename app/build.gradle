@@ -4,10 +4,11 @@ plugins {
 }
 
 android {
+    namespace 'virtual.camera.app' // <<== இதை add பண்ணுங்கள்!
     compileSdkVersion 34
 
     defaultConfig {
-        applicationId "com.example.myapp"
+        applicationId "virtual.camera.app"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1

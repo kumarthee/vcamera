@@ -42,7 +42,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
     implementation 'androidx.preference:preference:1.2.1'
 
-    // JitPack dependencies (CORRECT format)
-    implementation 'com.github.imuxuan:FloatingMagnetView:1.7'
+    // ✅ MavenCentral dependencies (CORRECT format)
+    implementation 'com.imuxuan.floatingview:floatingview:1.7'
     implementation 'com.github.othershe:CornerLabelView:1.0.2'
 }
